@@ -4,9 +4,6 @@ AI-assisted interactive prototype for a personal finance concept
 
 A lightweight HTML/CSS/JavaScript prototype for a personal finance concept that helps people with irregular income understand a safe daily spending limit.
 
-## Live prototype
-[Open live prototype](https://nnakirin.github.io/safe-spend-prototype/)
-
 ## What is included
 - Onboarding
 - Home / Safe daily spend screen
