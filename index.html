@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe Spend</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    
+    
+    <section id="welcome-screen" class="screen active">
+      <div class="welcome-gradient"></div>
+      <div class="welcome-content">
+        <h1 class="welcome-title">Фінанси без<br>складних таблиць</h1>
+        <p class="welcome-subtitle">Допоможемо зрозуміти, скільки<br>можна витратити сьогодні</p>
+      </div>
+      <div class="welcome-actions">
+        <button id="start-btn" class="btn-primary">Почати</button>
+      </div>
+    </section>
+
+    
+    <section id="amount-screen" class="screen">
+      <header class="step-header">
+        <div class="progress-bar">
+          <div class="step active"></div>
+          <div class="step"></div>
+          <div class="step"></div>
+        </div>
+        <div class="step-counter">1/3</div>
+      </header>
+      <div class="amount-content">
+        <h2 class="step-title">Скільки приблизно<br>грошей у тебе зараз є?</h2>
+        <div class="amount-display-wrapper">
+          <div id="amount-display" class="amount-display">5000 ₴</div>
+          <div class="amount-line"></div>
+        </div>
+      </div>
+      <div class="amount-actions">
+        <button id="next-btn-1" class="btn-primary">Далі</button>
+      </div>
+      <div class="numpad-wrapper">
+        <div class="numpad-gradient"></div>
+        <div class="numpad">
+          <button class="num-key">1</button><button class="num-key">2</button><button class="num-key">3</button>
+          <button class="num-key">4</button><button class="num-key">5</button><button class="num-key">6</button>
+          <button class="num-key">7</button><button class="num-key">8</button><button class="num-key">9</button>
+          <button class="num-key empty"></button><button class="num-key">0</button>
+          <button class="num-key action-key" id="delete-key">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="obligations-screen" class="screen">
+      <div class="obligations-gradient"></div>
+      <header class="step-header relative-z">
+        <div class="progress-bar">
+          <div class="step active"></div><div class="step active"></div><div class="step"></div>
+        </div>
+        <div class="step-counter">2/3</div>
+      </header>
+      <div class="amount-content relative-z">
+        <h2 class="step-title tight-bottom">Чи є у тебе обов'язкові платежі чи борги найближчим часом?</h2>
+        <p class="step-subtitle">Наприклад: оплата оренди, розстрочки, підписки</p>
+        <div class="options-group">
+          <button class="option-card" data-value="1000">До 1000 грн</button>
+          <button class="option-card" data-value="5000">1000 - 5000 грн</button>
+          <button class="option-card" data-value="999999">Більше 5000 ₴ (ввести суму)</button>
+        </div>
+      </div>
+      <div class="amount-actions relative-z options-actions">
+        <button id="next-btn-2" class="btn-primary" disabled>Далі</button>
+        <button id="skip-btn" class="btn-text">Немає таких платежів</button>
+      </div>
+    </section>
+
+   
+    <section id="horizon-screen" class="screen">
+      <div class="horizon-gradient"></div>
+      <header class="step-header relative-z">
+        <div class="progress-bar">
+          <div class="step active"></div><div class="step active"></div><div class="step active"></div>
+        </div>
+        <div class="step-counter">3/3</div>
+      </header>
+      <div class="amount-content relative-z">
+        <h2 class="step-title">На скільки днів нам варто розтягнути ці гроші для безпеки?</h2>
+        <div class="options-group">
+          <button class="option-card horizon-option" data-days="3">На 3 дні</button>
+          <button class="option-card horizon-option" data-days="7" data-label="тиждень">На тиждень</button>
+          <button class="option-card horizon-option" data-days="14" data-label="два тижні">На два тижні</button>
+        </div>
+      </div>
+      <div class="amount-actions relative-z options-actions">
+        <button id="next-btn-3" class="btn-primary" disabled>Далі</button>
+      </div>
+    </section>
+
+   
+    <section id="result-screen" class="screen result-screen">
+      <div class="result-gradient"></div>
+      <header class="result-header relative-z">
+        <div class="profile-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+      </header>
+      <div class="result-content relative-z">
+        <div class="result-card">
+          <p class="result-label">Сьогодні ти можеш вільно витратити</p>
+          <h2 id="final-amount" class="result-amount">0 ₴</h2>
+          <p id="final-formula-label" class="result-formula">Поточний залишок мінус<br>обов'язкове, розтягнуто на дні</p>
+        </div>
+        <div class="days-tracker">
+          <div id="days-dots" class="dots-container"></div>
+          <p id="days-text" class="days-label">День 1 з X</p>
+        </div>
+      </div>
+      <div class="amount-actions relative-z">
+        <button id="update-balance-btn" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+            <path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg> Оновити залишок
+        </button>
+      </div>
+    </section>
+
+  
+    <section id="bank-screen" class="screen">
+      <div class="bank-gradient"></div>
+      
+      <div class="top-nav relative-z">
+        <button id="back-to-result" class="icon-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="bank-content relative-z">
+        <div class="bank-header-text">
+          <h2 class="step-title tight-bottom" style="text-align: center;">Обери свій банк</h2>
+          <p class="step-subtitle" style="text-align: center; margin-bottom: 24px;">Бачимо тільки залишок. Не можемо<br>робити платежі й перекази</p>
+        </div>
+
+        <div class="search-bar-container">
+          <input type="text" class="search-input" placeholder="Пошук банку">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+
+        <div class="bank-list">
+          <button class="bank-card">
+            <div class="bank-logo mono-logo">mono</div>
+            <span class="bank-name">Monobank</span>
+          </button>
+          <button class="bank-card">
+            <div class="bank-logo privat-logo">
+              <div class="privat-shape">
+                <div class="privat-black"></div>
+              </div>
+            </div>
+            <span class="bank-name">ПриватБанк</span>
+          </button>
+          <button class="bank-card">
+            <div class="bank-logo sense-logo">sense</div>
+            <span class="bank-name">Sense Bank</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    
+    <div id="overdraft-sheet" class="bottom-sheet-overlay">
+      <div class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <h3 class="sheet-title">Здається, обов'язкових витрат більше, ніж є на руках</h3>
+        <p class="sheet-subtitle">Перевіримо цифри чи сфокусуємось на пошуку додаткового доходу?</p>
+        <div class="sheet-actions">
+          <button id="sheet-change-btn" class="btn-primary">Змінити суми</button>
+          <button id="sheet-ignore-btn" class="btn-text">Все одно показати оцінку</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="bank-sheet" class="bottom-sheet-overlay">
+      <div class="bottom-sheet bank-sheet-content">
+        <div class="sheet-handle"></div>
+        <h3 class="sheet-title left-align">Хочеш, щоб ми самі оновлювали цей залишок?</h3>
+        <p class="sheet-subtitle left-align bank-subtitle">Підключи банківську картку<br><strong>тільки читання, без права платежів</strong></p>
+        <div class="sheet-actions row-actions">
+          <button id="connect-bank-btn" class="btn-primary half-btn">Підключити</button>
+          <button id="decline-bank-btn" class="btn-secondary half-btn">Ні, дякую</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
