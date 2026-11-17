@@ -1,5 +1,6 @@
 # safe-spend-prototype
 AI-assisted interactive prototype for a personal finance concept
+Live demo: https://nnakirin.github.io/safe-spend-prototype/
 # Safe Spend — AI-assisted interactive prototype
 
 A lightweight HTML/CSS/JavaScript prototype for a personal finance concept that helps people with irregular income understand a safe daily spending limit.
